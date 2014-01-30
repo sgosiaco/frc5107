@@ -103,6 +103,9 @@ public class Chell extends SimpleRobot {
           while(leftStick.getRawButton(3)){
               cFeed.set(cFeedSpeed);
           }
+          while(leftStick.getRawButton(2)){
+              cFeed.set(-cFeedSpeed);
+          }
           //Claw Feed Motor end
           
           //Enter servo code here
