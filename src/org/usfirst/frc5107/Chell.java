@@ -67,7 +67,7 @@ public class Chell extends SimpleRobot {
           //Variables start
           cMotorSpeed = prefs.getDouble("Gearbox Speed", cMotorSpeed);
           cFeedSpeed = prefs.getDouble("Feed Motor Speed", cFeedSpeed);
-          cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", cFeedSpeed);
+          cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", cScrewSpeed);
           //Variables end
           compressor.enabled();
           
