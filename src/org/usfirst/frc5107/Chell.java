@@ -31,25 +31,25 @@ public class Chell extends SimpleRobot {
      * This function is called once each time the robot enters autonomous mode.
      */
     //Outputs start
-    RobotDrive drive = new RobotDrive(1,2);  //Base drive
-    Jaguar cMotor1 = new Jaguar(3); //First gearbox motor
-    Jaguar cMotor2 = new Jaguar(4); //Second gearbox motor
-    Victor cScrew = new Victor(8); //Leadscrew Motor
-    Servo cameraPan = new Servo(5); //Axis camera pan
-    Servo cameraTilt = new Servo(6); //Axis camera tilt
-    Victor cFeed = new Victor(7); //Claw feed motor
-    Solenoid solenoid1 = new Solenoid(1); //Pneumatic Solenoid 1
-    Solenoid solenoid2 = new Solenoid(2); //Pneumatic Solenoid 1
+    RobotDrive drive = new RobotDrive(1,2);  //Base drive PWM 1&2
+    Jaguar cMotor1 = new Jaguar(3); //First gearbox motor PWM 3
+    Jaguar cMotor2 = new Jaguar(4); //Second gearbox motor PWM 4
+    Servo cameraPan = new Servo(5); //Axis camera pan PWM 5
+    Servo cameraTilt = new Servo(6); //Axis camera tilt PWM 6
+    Victor cFeed = new Victor(7); //Claw feed motor PWM 7
+    Victor cScrew = new Victor(8); //Leadscrew Motor PWM 8
+    Solenoid solenoid1 = new Solenoid(1); //Pneumatic Solenoid 1 SOLENOID 1
+    Solenoid solenoid2 = new Solenoid(2); //Pneumatic Solenoid 2 SOLENOID 2
     //Outputs end
     //Inputs start
     Joystick leftStick = new Joystick(1); //Left joystick
     Joystick rightStick = new Joystick(2); //Right joystick
-    DigitalInput clawLimit = new DigitalInput(2); //Winch limit switch
-    DigitalInput screwUp = new DigitalInput(3); //Claw up limit
-    DigitalInput screwDown = new DigitalInput(4); //Claw down limit
+    DigitalInput clawLimit = new DigitalInput(2); //Winch limit switch DIO 2
+    DigitalInput screwUp = new DigitalInput(3); //Claw up limit DIO 3
+    DigitalInput screwDown = new DigitalInput(4); //Claw down limit DIO 4
     //Inputs end
     
-    Compressor compressor = new Compressor(1,1); //Air compressor
+    Compressor compressor = new Compressor(1,1); //Air compressor DIO 1 & RELAY 1
     Preferences prefs;
     double cMotorSpeed; //Claw gearbox motor speed
     double cFeedSpeed; //Claw feed motor speed
