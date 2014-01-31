@@ -57,9 +57,9 @@ public class Chell extends SimpleRobot {
     
     public void autonomous() {
           //Variables start
-          cMotorSpeed = prefs.getDouble("Gearbox Speed", cMotorSpeed);
-          cFeedSpeed = prefs.getDouble("Feed Motor Speed", cFeedSpeed);
-          cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", cScrewSpeed);
+          cMotorSpeed = prefs.getDouble("GearboxSpeed", .25);
+          cFeedSpeed = prefs.getDouble("FeedMotorSpeed", .25);
+          cScrewSpeed = prefs.getDouble("ClawLeadscrewSpeed", .25);
           //Variables end
           compressor.enabled();
     }
@@ -68,14 +68,13 @@ public class Chell extends SimpleRobot {
      * This function is called once each time the robot enters operator control.
      */
     public void operatorControl() {
-      while(true && isOperatorControl() && isEnabled()){
           //Variables start
-          cMotorSpeed = prefs.getDouble("Gearbox Speed", cMotorSpeed);
-          cFeedSpeed = prefs.getDouble("Feed Motor Speed", cFeedSpeed);
-          cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", cScrewSpeed);
+          cMotorSpeed = prefs.getDouble("Gearbox Speed", .25);
+          cFeedSpeed = prefs.getDouble("Feed Motor Speed", .25);
+          cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", .25);
           //Variables end
           compressor.enabled();
-          
+      while(true && isOperatorControl() && isEnabled()){
           drive.tankDrive(leftStick, rightStick); //Tank drive
           
           //Gearbox motor control start
