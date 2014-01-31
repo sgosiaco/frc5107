@@ -68,6 +68,7 @@ public class Chell extends SimpleRobot {
      * This function is called once each time the robot enters operator control.
      */
     public void operatorControl() {
+          drive.setSafetyEnabled(false); //TESTING PURPOSES
           //Variables start
           cMotorSpeed = prefs.getDouble("Gearbox Speed", .25);
           cFeedSpeed = prefs.getDouble("Feed Motor Speed", .25);
