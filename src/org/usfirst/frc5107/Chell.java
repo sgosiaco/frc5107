@@ -57,9 +57,9 @@ public class Chell extends SimpleRobot {
     
     public void autonomous() {
           //Variables start
-          cMotorSpeed = prefs.getDouble("GearboxSpeed", .25);
-          cFeedSpeed = prefs.getDouble("FeedMotorSpeed", .25);
-          cScrewSpeed = prefs.getDouble("ClawLeadscrewSpeed", .25);
+          //cMotorSpeed = prefs.getDouble("GearboxSpeed", .25);
+          //cFeedSpeed = prefs.getDouble("FeedMotorSpeed", .25);
+          //cScrewSpeed = prefs.getDouble("ClawLeadscrewSpeed", .25);
           //Variables end
           compressor.enabled();
     }
@@ -70,12 +70,13 @@ public class Chell extends SimpleRobot {
     public void operatorControl() {
           drive.setSafetyEnabled(false); //TESTING PURPOSES
           //Variables start
-          cMotorSpeed = prefs.getDouble("Gearbox Speed", .25);
-          cFeedSpeed = prefs.getDouble("Feed Motor Speed", .25);
-          cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", .25);
+          //cMotorSpeed = prefs.getDouble("Gearbox Speed", .25);
+          //cFeedSpeed = prefs.getDouble("Feed Motor Speed", .25);
+          //cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", .25);
           //Variables end
           compressor.enabled();
       while(true && isOperatorControl() && isEnabled()){
+          System.out.println("Teleop Start");
           drive.tankDrive(leftStick, rightStick); //Tank drive
           
           //Gearbox motor control start
@@ -84,6 +85,8 @@ public class Chell extends SimpleRobot {
            cMotor1.set(cMotorSpeed);
            cMotor2.set(cMotorSpeed);
           }
+          cMotor1.set(0);
+          cMotor2.set(0);
           //Gearbox motor control end
           
           //Fire code start
@@ -99,9 +102,9 @@ public class Chell extends SimpleRobot {
           //Fire code end
           
           //Compressor Auto start
-          while(compressor.getPressureSwitchValue()==true){
-            compressor.start();
-          }
+          //while(compressor.getPressureSwitchValue()==true){
+          //  compressor.start();
+          //}
           //Compressor Auto end
           
           //Claw Feed Motor start
@@ -111,19 +114,23 @@ public class Chell extends SimpleRobot {
           while(leftStick.getRawButton(2)){
               cFeed.set(-cFeedSpeed);
           }
+          cFeed.set(0);
           //Claw Feed Motor end
           
           //Enter servo code here
           
           //Claw Up and Down start
           while(rightStick.getRawButton(3)&&screwUp.get()==false){
-              cScrew.set(cScrewSpeed);
+              System.out.println("UP");
+              cScrew.set(-.25);
           }
           while(rightStick.getRawButton(2)&&screwDown.get()==false){
-              cScrew.set(-cScrewSpeed);
-          }
+              System.out.println("DOWN");
+              cScrew.set(.25);
           //Claw Up and Down end
-      }
+          }
+          cScrew.set(0);
+       }
     }
     
     /**
