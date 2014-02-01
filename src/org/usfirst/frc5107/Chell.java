@@ -58,9 +58,9 @@ public class Chell extends SimpleRobot {
     double cScrewSpeed; //Claw leadscrew speed
     
     public Chell(){
-          prefs.putDouble("Gearbox Speed", .25);
-          prefs.putDouble("Feed Motor Speed", .25);
-          prefs.putDouble("Claw Leadscrew Speed", .25);
+          //prefs.putDouble("Gearbox Speed", .25);
+          //prefs.putDouble("Feed Motor Speed", .25);
+          //prefs.putDouble("Claw Leadscrew Speed", .25);
     }
     
     public void autonomous() {
@@ -78,13 +78,13 @@ public class Chell extends SimpleRobot {
     public void operatorControl() {
           drive.setSafetyEnabled(false); //TESTING PURPOSES
           //Variables start
-          cMotorSpeed = prefs.getDouble("Gearbox Speed", .25);
-          cFeedSpeed = prefs.getDouble("Feed Motor Speed", .25);
-          cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", .25);
+          //cMotorSpeed = prefs.getDouble("Gearbox Speed", .25);
+          //cFeedSpeed = prefs.getDouble("Feed Motor Speed", .25);
+          //cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", .25);
           //Variables end
-          DriverStationLCD.getInstance().println(Line.kUser2, 1, "Gearbox Speed:"+cMotorSpeed);
-          DriverStationLCD.getInstance().println(Line.kUser3, 1, "Feed Motor Speed:"+cFeedSpeed);
-          DriverStationLCD.getInstance().println(Line.kUser4, 1, "Claw Leadscrew Speed:"+cScrewSpeed);
+          DriverStationLCD.getInstance().println(Line.kUser2, 1, "Gearbox Speed:");
+          DriverStationLCD.getInstance().println(Line.kUser3, 1, "Feed Motor Speed:");
+          DriverStationLCD.getInstance().println(Line.kUser4, 1, "Claw Leadscrew Speed:");
           DriverStationLCD.getInstance().updateLCD();
           compressor.enabled();
       while(true && isOperatorControl() && isEnabled()){
