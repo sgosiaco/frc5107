@@ -10,6 +10,8 @@ package org.usfirst.frc5107;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DriverStationLCD;
+import edu.wpi.first.wpilibj.DriverStationLCD.Line;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
@@ -55,6 +57,12 @@ public class Chell extends SimpleRobot {
     double cFeedSpeed; //Claw feed motor speed
     double cScrewSpeed; //Claw leadscrew speed
     
+    public Chell(){
+          prefs.putDouble("Gearbox Speed", .25);
+          prefs.putDouble("Feed Motor Speed", .25);
+          prefs.putDouble("Claw Leadscrew Speed", .25);
+    }
+    
     public void autonomous() {
           //Variables start
           //cMotorSpeed = prefs.getDouble("GearboxSpeed", .25);
@@ -63,20 +71,26 @@ public class Chell extends SimpleRobot {
           //Variables end
           compressor.enabled();
     }
-
+    
     /**
      * This function is called once each time the robot enters operator control.
      */
     public void operatorControl() {
           drive.setSafetyEnabled(false); //TESTING PURPOSES
           //Variables start
-          //cMotorSpeed = prefs.getDouble("Gearbox Speed", .25);
-          //cFeedSpeed = prefs.getDouble("Feed Motor Speed", .25);
-          //cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", .25);
+          cMotorSpeed = prefs.getDouble("Gearbox Speed", .25);
+          cFeedSpeed = prefs.getDouble("Feed Motor Speed", .25);
+          cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", .25);
           //Variables end
+          DriverStationLCD.getInstance().println(Line.kUser2, 1, "Gearbox Speed:"+cMotorSpeed);
+          DriverStationLCD.getInstance().println(Line.kUser3, 1, "Feed Motor Speed:"+cFeedSpeed);
+          DriverStationLCD.getInstance().println(Line.kUser4, 1, "Claw Leadscrew Speed:"+cScrewSpeed);
+          DriverStationLCD.getInstance().updateLCD();
           compressor.enabled();
       while(true && isOperatorControl() && isEnabled()){
           System.out.println("Teleop Start");
+          DriverStationLCD.getInstance().println(Line.kUser1, 1, "TeleOp Start");
+          DriverStationLCD.getInstance().updateLCD();
           drive.tankDrive(leftStick, rightStick); //Tank drive
           
           //Gearbox motor control start
