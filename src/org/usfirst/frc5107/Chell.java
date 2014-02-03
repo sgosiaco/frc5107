@@ -53,9 +53,10 @@ public class Chell extends SimpleRobot {
     
     Compressor compressor = new Compressor(1,1); //Air compressor DIO 1 & RELAY 1
     Preferences prefs;
-    double cMotorSpeed; //Claw gearbox motor speed
-    double cFeedSpeed; //Claw feed motor speed
-    double cScrewSpeed; //Claw leadscrew speed
+    double cMotorSpeed=.25; //Claw gearbox motor speed
+    double cFeedSpeed=.25; //Claw feed motor speed
+    double cScrewSpeed=.25; //Claw leadscrew speed
+    boolean teleop=true;
     
     public Chell(){
           //prefs.putDouble("Gearbox Speed", .25);
@@ -82,20 +83,29 @@ public class Chell extends SimpleRobot {
           //cFeedSpeed = prefs.getDouble("Feed Motor Speed", .25);
           //cScrewSpeed = prefs.getDouble("Claw Leadscrew Speed", .25);
           //Variables end
-          DriverStationLCD.getInstance().println(Line.kUser2, 1, "Gearbox Speed:");
-          DriverStationLCD.getInstance().println(Line.kUser3, 1, "Feed Motor Speed:");
-          DriverStationLCD.getInstance().println(Line.kUser4, 1, "Claw Leadscrew Speed:");
+          DriverStationLCD.getInstance().println(Line.kUser2, 1, "Gearbox Speed:"+cMotorSpeed);
+          DriverStationLCD.getInstance().println(Line.kUser3, 1, "Feed Motor Speed:"+cFeedSpeed);
+          DriverStationLCD.getInstance().println(Line.kUser4, 1, "Claw Leadscrew Speed:"+cScrewSpeed);
           DriverStationLCD.getInstance().updateLCD();
           compressor.enabled();
       while(true && isOperatorControl() && isEnabled()){
-          System.out.println("Teleop Start");
-          DriverStationLCD.getInstance().println(Line.kUser1, 1, "TeleOp Start");
+          if(teleop==true){
+           System.out.println("Teleop Start");
+           DriverStationLCD.getInstance().println(Line.kUser1, 1, "TeleOp Start");
+           DriverStationLCD.getInstance().updateLCD(); 
+           DriverStationLCD.getInstance().clear();
+           teleop=false;
+          }
+          
+          DriverStationLCD.getInstance().println(Line.kUser1, 1, "Tank Drive");
           DriverStationLCD.getInstance().updateLCD();
           drive.tankDrive(leftStick, rightStick); //Tank drive
           
           //Gearbox motor control start
           while(leftStick.getTrigger() && clawLimit.get()== false)
           {
+           DriverStationLCD.getInstance().println(Line.kUser2, 1, "Gearbox Start");
+           DriverStationLCD.getInstance().updateLCD();
            cMotor1.set(cMotorSpeed);
            cMotor2.set(cMotorSpeed);
           }
@@ -105,11 +115,15 @@ public class Chell extends SimpleRobot {
           
           //Fire code start
           if(rightStick.getTrigger() && clawLimit.get() == true){
+              DriverStationLCD.getInstance().println(Line.kUser3, 1, "Neutral");
+              DriverStationLCD.getInstance().updateLCD();
               solenoid1.set(true);
               solenoid2.set(false);
           }
           else
           {
+              DriverStationLCD.getInstance().println(Line.kUser3, 1, "Low Gear");
+              DriverStationLCD.getInstance().updateLCD();
               solenoid1.set(false);
               solenoid2.set(true);
           }
@@ -123,9 +137,13 @@ public class Chell extends SimpleRobot {
           
           //Claw Feed Motor start
           while(leftStick.getRawButton(3)){
+              DriverStationLCD.getInstance().println(Line.kUser4, 1, "Claw Feed In");
+              DriverStationLCD.getInstance().updateLCD();
               cFeed.set(cFeedSpeed);
           }
           while(leftStick.getRawButton(2)){
+              DriverStationLCD.getInstance().println(Line.kUser4, 1, "Claw Feed Out");
+              DriverStationLCD.getInstance().updateLCD();
               cFeed.set(-cFeedSpeed);
           }
           cFeed.set(0);
@@ -136,15 +154,20 @@ public class Chell extends SimpleRobot {
           //Claw Up and Down start
           while(rightStick.getRawButton(3)&&screwUp.get()==false){
               System.out.println("UP");
-              cScrew.set(-.25);
+              DriverStationLCD.getInstance().println(Line.kUser5, 1, "Claw Up");
+              DriverStationLCD.getInstance().updateLCD();
+              cScrew.set(-cScrewSpeed);
           }
           while(rightStick.getRawButton(2)&&screwDown.get()==false){
               System.out.println("DOWN");
-              cScrew.set(.25);
+              DriverStationLCD.getInstance().println(Line.kUser5, 1, "Claw Down");
+              DriverStationLCD.getInstance().updateLCD();
+              cScrew.set(cScrewSpeed);
           //Claw Up and Down end
           }
           cScrew.set(0);
        }
+      teleop=true;
     }
     
     /**
