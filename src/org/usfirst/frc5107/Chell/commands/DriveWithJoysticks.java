@@ -8,15 +8,15 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package org.usfirst.frc5107.Chell.commands;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc5107.Chell.Robot;
-import org.usfirst.frc5107.Chell.OI;
-import org.usfirst.frc5107.Chell.RobotMap;
 /**
  *
  */
-public class  DriveWithJoysticks extends Command {
-    public static OI oi;
+public class  DriveWithJoysticks extends CommandBase {
+    private int i;
     public DriveWithJoysticks() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -30,7 +30,9 @@ public class  DriveWithJoysticks extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        RobotMap.driveTrainRobotDrive.tankDrive(oi.getJoystick1(), oi.getJoystick2());
+        Robot.driveTrain.drive(Robot.oi.joystick1,Robot.oi.joystick2);
+
+        //Robot.driveTrain.drive1(Robot.oi.joystick1.getY(), Robot.oi.joystick2.getY());
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
