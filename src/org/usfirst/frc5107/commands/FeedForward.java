@@ -6,6 +6,8 @@
 
 package org.usfirst.frc5107.commands;
 
+import edu.wpi.first.wpilibj.DriverStationLCD;
+
 /**
  *
  * @author BITKRUSHER
@@ -22,6 +24,10 @@ public class FeedForward extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser4, 1, "               ");
+        DriverStationLCD.getInstance().updateLCD();
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser4, 1, "Claw Feed In");
+        DriverStationLCD.getInstance().updateLCD();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -44,6 +50,10 @@ public class FeedForward extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
         claw.feedOff();
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser4, 1, "                ");
+        DriverStationLCD.getInstance().updateLCD();
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser4, 1, "Claw Feed Off");
+        DriverStationLCD.getInstance().updateLCD();
     }
 
     // Called when another command which requires one or more of the same

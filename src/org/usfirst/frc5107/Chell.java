@@ -8,6 +8,7 @@
 package org.usfirst.frc5107;
 
 
+import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -56,6 +57,8 @@ public class Chell extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         autonomousCommand.cancel();
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser1, 1, "TeleOp Start");
+        DriverStationLCD.getInstance().updateLCD(); 
     }
 
     /**

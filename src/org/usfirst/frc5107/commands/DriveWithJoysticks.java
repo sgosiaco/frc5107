@@ -5,6 +5,8 @@
  */
 package org.usfirst.frc5107.commands;
 
+import edu.wpi.first.wpilibj.DriverStationLCD;
+
 /**
  *
  * @author BITKRUSHER
@@ -16,6 +18,8 @@ public class DriveWithJoysticks extends CommandBase {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser1, 1, "Tank Drive Start");
+        DriverStationLCD.getInstance().updateLCD();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -37,11 +41,16 @@ public class DriveWithJoysticks extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser1, 1, "                  ");
+        DriverStationLCD.getInstance().updateLCD();
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser1, 1, "Tank Drive Stop");
+        DriverStationLCD.getInstance().updateLCD();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        end();
     }
 
 }

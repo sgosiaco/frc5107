@@ -6,6 +6,8 @@
 
 package org.usfirst.frc5107.commands;
 
+import edu.wpi.first.wpilibj.DriverStationLCD;
+
 /**
  *
  * @author BITKRUSHER
@@ -22,6 +24,8 @@ public class SpringForward extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "Gearbox Forward");
+        DriverStationLCD.getInstance().updateLCD();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -44,6 +48,10 @@ public class SpringForward extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
         claw.springOff();
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "                 ");
+        DriverStationLCD.getInstance().updateLCD();
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "Gearbox Off");
+        DriverStationLCD.getInstance().updateLCD();
     }
 
     // Called when another command which requires one or more of the same
