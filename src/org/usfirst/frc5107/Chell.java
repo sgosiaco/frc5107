@@ -25,7 +25,7 @@ import org.usfirst.frc5107.commands.CommandBase;
  */
 public class Chell extends IterativeRobot {
 
-    Command autonomousCommand;
+    //Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -41,7 +41,7 @@ public class Chell extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        autonomousCommand.start();
+        //autonomousCommand.start();
     }
 
     /**
@@ -56,7 +56,7 @@ public class Chell extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.cancel();
+        //autonomousCommand.cancel();
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser1, 1, "TeleOp Start");
         DriverStationLCD.getInstance().updateLCD(); 
     }

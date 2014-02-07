@@ -5,7 +5,6 @@
  */
 package org.usfirst.frc5107.subsystems;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc5107.RobotMap;
@@ -19,12 +18,10 @@ public class Pneumatics extends Subsystem {
 
     Solenoid solenoid1;
     Solenoid solenoid2;
-    DigitalInput clawLimit;
-
+    
     public Pneumatics() {
         solenoid1 = new Solenoid(RobotMap.solenoid1);
         solenoid2 = new Solenoid(RobotMap.solenoid2);
-        clawLimit = new DigitalInput(RobotMap.clawLimit);
     }
 
     public void initDefaultCommand() {
@@ -37,10 +34,8 @@ public class Pneumatics extends Subsystem {
     }
 
     public void fire() {
-        if (clawLimit.get() == true) {
             solenoid1.set(true);
             solenoid2.set(false);
-        }
     }
 
 }

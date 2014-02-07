@@ -91,5 +91,7 @@ public class Claw extends Subsystem {
     public void feedOff(){
         cFeed.set(0);
     }
-    
+    public boolean clawlimit(){
+        return clawLimit.get();
+    }
 }

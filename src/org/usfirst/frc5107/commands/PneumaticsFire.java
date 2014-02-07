@@ -35,7 +35,9 @@ public class PneumaticsFire extends CommandBase {
      * Tells the claw to do nothing, stopping any previous movement.
      */
     protected void execute() {
+        if(claw.clawlimit()==true){
         pneumatics.fire();
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

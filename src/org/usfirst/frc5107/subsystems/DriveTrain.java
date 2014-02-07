@@ -20,7 +20,9 @@ public class DriveTrain extends Subsystem {
     RobotDrive drive;
     public DriveTrain(){
        drive = new RobotDrive(RobotMap.leftMotor, RobotMap.rightMotor);
-    
+       drive.setSafetyEnabled(false);
+       drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+       drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
  }
     public void initDefaultCommand() {
         setDefaultCommand(new DriveWithJoysticks());

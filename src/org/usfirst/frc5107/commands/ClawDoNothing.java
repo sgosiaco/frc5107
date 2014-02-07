@@ -24,6 +24,7 @@ public class ClawDoNothing extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "Gearbox Off");
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser3, 1, "Neutral");
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser4, 1, "Claw Feed Off");
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser5, 1, "Claw Off");
