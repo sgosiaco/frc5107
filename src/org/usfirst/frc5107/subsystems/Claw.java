@@ -21,12 +21,12 @@ public class Claw extends Subsystem {
         // The claws motor
     Victor cScrew1;
     Victor cScrew2;
-    Victor cFeed;
     Jaguar cMotor1;
     Jaguar cMotor2;
+    //Victor cFeed;
+    DigitalInput clawLimit;
     DigitalInput clawUp;
     DigitalInput clawDown;
-    DigitalInput clawLimit;
     
     // Initialize your subsystem here
     /**
@@ -35,12 +35,12 @@ public class Claw extends Subsystem {
     public Claw() {
         cScrew1 = new Victor(RobotMap.cScrew1);
         cScrew2 = new Victor(RobotMap.cScrew2);
-        cFeed = new Victor(RobotMap.cFeed);
-        cMotor1 = new Jaguar(RobotMap.cMotor1);
-        cMotor2 = new Jaguar(RobotMap.cMotor2);
         clawUp = new DigitalInput(RobotMap.screwUp);
         clawDown = new DigitalInput(RobotMap.screwDown);
+        cMotor1 = new Jaguar(RobotMap.cMotor1);
+        cMotor2 = new Jaguar(RobotMap.cMotor2);
         clawLimit = new DigitalInput(RobotMap.clawLimit);
+        //cFeed = new Victor(RobotMap.cFeed);
         
     }
     
@@ -50,47 +50,41 @@ public class Claw extends Subsystem {
     public void initDefaultCommand() {
         setDefaultCommand(new ClawDoNothing());
     }
-    public void springForward(){
-        if(clawLimit.get()==false){
-        cMotor1.set(RobotMap.cMotorSpeed);
-        cMotor2.set(RobotMap.cMotorSpeed);
-        }
-    }
-    public void springReverse(){
-        if(clawLimit.get()==false){
-        cMotor1.set(-RobotMap.cMotorSpeed);
-        cMotor2.set(-RobotMap.cMotorSpeed);
-        }
-    }
-    public void springOff(){
-        cMotor1.set(0);
-        cMotor2.set(0);
-    }
     public void clawUp(){
-        if(clawUp.get()==false){
             cScrew1.set(RobotMap.cScrewSpeed);
             cScrew2.set(RobotMap.cScrewSpeed);
-        }
+            
     }
     public void clawDown(){
-        if(clawDown.get()==false){
             cScrew1.set(-RobotMap.cScrewSpeed);
             cScrew2.set(-RobotMap.cScrewSpeed);
-        }
     }
     public void clawOff(){
         cScrew1.set(0);
         cScrew2.set(0);
     }
-    public void feedForward(){
-        cFeed.set(RobotMap.cFeedSpeed);
+    public void springForward(){
+        cMotor1.set(RobotMap.cMotorSpeed);
+        cMotor2.set(RobotMap.cMotorSpeed);
+
     }
-    public void feedReverse(){
-        cFeed.set(-RobotMap.cFeedSpeed);
+    public void springReverse(){
+        cMotor1.set(-RobotMap.cMotorSpeed);
+        cMotor2.set(-RobotMap.cMotorSpeed);
     }
-    public void feedOff(){
-        cFeed.set(0);
+    public void springOff(){
+        cMotor1.set(0);
+        cMotor2.set(0);
     }
+    //public void feedForward(){
+    //    cFeed.set(RobotMap.cFeedSpeed);
+    //}
+    //public void feedReverse(){
+    //    cFeed.set(-RobotMap.cFeedSpeed);
+    //}
+    //public void feedOff(){
+    //    cFeed.set(0);
+    //}
     public boolean clawlimit(){
         return clawLimit.get();
     }

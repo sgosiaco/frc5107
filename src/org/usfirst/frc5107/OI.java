@@ -14,8 +14,13 @@ import org.usfirst.frc5107.commands.FeedForward;
 import org.usfirst.frc5107.commands.FeedReverse;
 import org.usfirst.frc5107.commands.PneumaticsFire;
 import org.usfirst.frc5107.commands.PneumaticsNeutral;
+import org.usfirst.frc5107.commands.ServoDown;
+import org.usfirst.frc5107.commands.ServoUp;
 import org.usfirst.frc5107.commands.SpringForward;
 import org.usfirst.frc5107.commands.SpringReverse;
+import org.usfirst.frc5107.commands.VisionTarget;
+import org.usfirst.frc5107.commands.VisionTargetXY;
+import org.usfirst.frc5107.commands.yTrack;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -74,10 +79,14 @@ public class OI {
     public OI(){
         lButton1.whileHeld(new SpringForward());
         rButton1.whenPressed(new PneumaticsFire());
+        rButton1.whenReleased(new PneumaticsNeutral());
         lButton3.whileHeld(new FeedForward());
         lButton2.whileHeld(new FeedReverse());
-        rButton3.whileHeld(new ClawUp());
-        rButton2.whileHeld(new ClawDown());
+        rButton2.whileHeld(new ClawUp());
+        rButton3.whileHeld(new ClawDown());
+        rButton4.whileHeld(new ServoUp());
+        rButton5.whileHeld(new ServoDown());
+        lButton5.toggleWhenPressed(new yTrack());
         
         SmartDashboard.putData("ClawDoNothing", new ClawDoNothing());
         SmartDashboard.putData("ClawDown", new ClawDown());
@@ -96,5 +105,12 @@ public class OI {
     public double getRightSpeed() {
         return rightStick.getY();
     }
+    /*
+    public void DisplayCoords(){
+        VisionTargetXY coordinates = new VisionTargetXY();
+        String javasucks = coordinates.VisionTargetXY().toString();
+        System.out.println(javasucks);
+    }
+    */
 }
 

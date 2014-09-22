@@ -4,9 +4,13 @@ import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc5107.OI;
+import org.usfirst.frc5107.subsystems.Camera;
 import org.usfirst.frc5107.subsystems.Claw;
 import org.usfirst.frc5107.subsystems.DriveTrain;
 import org.usfirst.frc5107.subsystems.Pneumatics;
+
+import org.usfirst.frc5107.subsystems.Camera;
+import org.usfirst.frc5107.subsystems.ClawFeed;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -21,6 +25,8 @@ public abstract class CommandBase extends Command {
     public static DriveTrain driveTrain = new DriveTrain();
     public static Claw claw = new Claw();
     public static Pneumatics pneumatics = new Pneumatics();
+    public static Camera camera = new Camera();
+    public static ClawFeed clawFeed = new ClawFeed();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

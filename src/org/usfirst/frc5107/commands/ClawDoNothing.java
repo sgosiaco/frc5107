@@ -37,7 +37,7 @@ public class ClawDoNothing extends CommandBase {
      */
     protected void execute() {
         claw.clawOff();
-        claw.feedOff();
+    //    claw.feedOff();
         claw.springOff();
     }
 

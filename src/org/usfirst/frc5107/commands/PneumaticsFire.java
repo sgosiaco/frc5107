@@ -28,6 +28,7 @@ public class PneumaticsFire extends CommandBase {
         DriverStationLCD.getInstance().updateLCD();
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser3, 1, "FIRE");
         DriverStationLCD.getInstance().updateLCD();
+        pneumatics.fire();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -35,9 +36,7 @@ public class PneumaticsFire extends CommandBase {
      * Tells the claw to do nothing, stopping any previous movement.
      */
     protected void execute() {
-        if(claw.clawlimit()==true){
-        pneumatics.fire();
-        }
+        //pneumatics.fire();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -51,7 +50,7 @@ public class PneumaticsFire extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        pneumatics.neutral();
+        //pneumatics.neutral();
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser3, 1, "Neutral");
         DriverStationLCD.getInstance().updateLCD();
     }

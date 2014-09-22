@@ -26,6 +26,7 @@ public class PneumaticsNeutral extends CommandBase {
     protected void initialize() {
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser3, 1, "Neutral");
         DriverStationLCD.getInstance().updateLCD();
+        pneumatics.neutral();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -33,7 +34,7 @@ public class PneumaticsNeutral extends CommandBase {
      * Tells the claw to do nothing, stopping any previous movement.
      */
     protected void execute() {
-        pneumatics.neutral();
+        //pneumatics.neutral();
     }
 
     // Make this return true when this Command no longer needs to run execute()

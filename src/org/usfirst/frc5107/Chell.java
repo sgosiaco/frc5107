@@ -13,7 +13,10 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import org.usfirst.frc5107.auto.AutonSt00f;
+import org.usfirst.frc5107.commands.AutonomousCommand;
 import org.usfirst.frc5107.commands.CommandBase;
+import org.usfirst.frc5107.commands.VisionTarget;
 
 
 /**
@@ -25,23 +28,24 @@ import org.usfirst.frc5107.commands.CommandBase;
  */
 public class Chell extends IterativeRobot {
 
-    //Command autonomousCommand;
+    Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+        CommandBase.init();
         // instantiate the command used for the autonomous period
-        //autonomousCommand = new ExampleCommand();
+        autonomousCommand = new AutonSt00f();
 
         // Initialize all subsystems
-        CommandBase.init();
+        
     }
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        //autonomousCommand.start();
+        autonomousCommand.start();
     }
 
     /**
@@ -56,9 +60,11 @@ public class Chell extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        //autonomousCommand.cancel();
+        autonomousCommand.cancel();
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser1, 1, "TeleOp Start");
         DriverStationLCD.getInstance().updateLCD(); 
+        VisionTarget vision = new VisionTarget();
+        vision.start();
     }
 
     /**

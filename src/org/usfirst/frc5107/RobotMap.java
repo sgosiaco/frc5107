@@ -14,16 +14,18 @@ public class RobotMap {
     // public static final int leftMotor = 1;
     // public static final int rightMotor = 2;
     public static final int
-            leftMotor = 1,
-            rightMotor = 2,
+            fLeftMotor = 9,
+            rLeftMotor = 10,
+            fRightMotor = 8,
+            rRightMotor = 7,
             cMotor1 = 3,
             cMotor2 = 4,
-            cameraPan = 5,
-            cameraTilt = 6,
-            cFeed = 7,
-            cScrew1 = 8,
-            cScrew2 = 9,
-            solenoid1 = 1,
+            //cameraPan = 5,
+            //cameraTilt = 6,
+            cFeed = 6,
+            cScrew1 = 2,
+            cScrew2 = 5,
+            solenoid1 = 3,
             solenoid2 = 2;
    
     // If you are using multiple modules, make sure to define both the port
@@ -36,8 +38,8 @@ public class RobotMap {
             screwDown = 4;
     
     public static final double
-            cMotorSpeed = .25,
-            cFeedSpeed = .25,
-            cScrewSpeed = .25;
+            cMotorSpeed = -.75,
+            cFeedSpeed = .5,
+            cScrewSpeed = .75;
             
 }

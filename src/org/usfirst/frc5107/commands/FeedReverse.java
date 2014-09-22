@@ -19,7 +19,7 @@ public class FeedReverse extends CommandBase {
      * be interrupted if another command requiring the claw is run.
      */
     public FeedReverse () {
-        requires(claw);
+        requires(clawFeed);
     }
 
     // Called just before this Command runs the first time
@@ -35,7 +35,7 @@ public class FeedReverse extends CommandBase {
      * Tells the claw to do nothing, stopping any previous movement.
      */
     protected void execute() {
-        claw.feedReverse();
+        clawFeed.feedReverse();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -49,7 +49,7 @@ public class FeedReverse extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        claw.feedOff();
+        clawFeed.feedOff();
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser4, 1, "                ");
         DriverStationLCD.getInstance().updateLCD();
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser4, 1, "Claw Feed Off");
