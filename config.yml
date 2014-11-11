@@ -1,0 +1,10 @@
+## Use YamlBeans
+## Extend this for every variable
+---
+cMotorSpeed: -.75
+cFeedSpeed: .5
+
+public class vals {
+	public double cMotorSpeed;
+	public double cFeedSpeed;
+}
