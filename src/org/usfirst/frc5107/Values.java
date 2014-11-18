@@ -20,6 +20,7 @@ import java.io.Reader;
  * @author Conner
  */
 public class Values {
+    //TODO: Find out if we can call these from a static context in the instqnced class if we set these as public
     private int
             fLeftMotor,
             rLeftMotor,
