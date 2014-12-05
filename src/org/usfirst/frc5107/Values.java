@@ -49,8 +49,8 @@ public class Values {
         Reader joe  = new InputStreamReader(input);
         fc.close();
         YamlReader reader = new YamlReader(joe);
-        Object parsed = reader.read(vals.class);
+        Object parsed = reader.read(Vals.class);
         //Extend this for each variable
-        this.cMotorSpeed = vals.cMotorSpeed;
+        this.cMotorSpeed = parsed.cMotorSpeed;
     }
 }
