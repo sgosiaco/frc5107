@@ -4,7 +4,3 @@
 cMotorSpeed: -.75
 cFeedSpeed: .5
 
-public class Vals {
-	public double cMotorSpeed;
-	public double cFeedSpeed;
-}
