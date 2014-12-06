@@ -13,33 +13,33 @@ public class RobotMap {
     // following variables to use with your drivetrain subsystem.
     // public static final int leftMotor = 1;
     // public static final int rightMotor = 2;
-    public static final int
-            fLeftMotor = 9,
-            rLeftMotor = 10,
-            fRightMotor = 8,
-            rRightMotor = 7,
-            cMotor1 = 3,
-            cMotor2 = 4,
+    public static int
+            fLeftMotor,
+            rLeftMotor,
+            fRightMotor,
+            rRightMotor,
+            cMotor1,
+            cMotor2,
             //cameraPan = 5,
             //cameraTilt = 6,
-            cFeed = 6,
-            cScrew1 = 2,
-            cScrew2 = 5,
-            solenoid1 = 3,
-            solenoid2 = 2;
+            cFeed,
+            cScrew1,
+            cScrew2,
+            solenoid1,
+            solenoid2;
    
     // If you are using multiple modules, make sure to define both the port
     // number and the module. For example you with a rangefinder:
     // public static final int rangefinderPort = 1;
     // public static final int rangefinderModule = 1;
-    public static final int
-            clawLimit = 2,
-            screwUp = 3,
-            screwDown = 4;
+    public static int
+            clawLimit,
+            screwUp,
+            screwDown;
     
-    public static final double
-            cMotorSpeed = -.75,
-            cFeedSpeed = .5,
-            cScrewSpeed = .75;
+    public static double
+            cMotorSpeed,
+            cFeedSpeed,
+            cScrewSpeed;
             
 }

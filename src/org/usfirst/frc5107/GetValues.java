@@ -21,26 +21,6 @@ import java.io.Reader;
  */
 public class GetValues {
     //TODO: Find out if we can call these from a static context in the instqnced class if we set these as public
-    private int
-            fLeftMotor,
-            rLeftMotor,
-            fRightMotor,
-            rRightMotor,
-            cMotor1,
-            cMotor2,
-            cFeed,
-            cScrew1,
-            cScrew2,
-            solenoid1,
-            solenoid2;
-    private int
-            clawLimit,
-            screwUp,
-            screwDown;
-    private double
-            cMotorSpeed,
-            cFeedSpeed,
-            cScrewSpeed;
     
     public GetValues() throws YamlException, IOException{
         FileConnection fc;
@@ -50,7 +30,27 @@ public class GetValues {
         fc.close();
         YamlReader reader = new YamlReader(joe);
         Values parsed = (Values) reader.read(Values.class);
-        //Extend this for each variable
-        this.cMotorSpeed = parsed.cMotorSpeed;
+        input.close();
+        joe.close();
+        reader.close();
+        
+        RobotMap.cFeed = parsed.cFeed;
+        RobotMap.cFeedSpeed = parsed.cFeedSpeed;
+        RobotMap.cMotor1 = parsed.cMotor1;
+        RobotMap.cMotor2 = parsed.cMotor2;
+        RobotMap.cMotorSpeed = parsed.cMotorSpeed;
+        RobotMap.cScrew1 = parsed.cScrew1;
+        RobotMap.cScrew2 = parsed.cScrew2;
+        RobotMap.cScrewSpeed = parsed.cScrewSpeed;
+        RobotMap.clawLimit = parsed.clawLimit;
+        RobotMap.fLeftMotor = parsed.fLeftMotor;
+        RobotMap.fRightMotor = parsed.fRightMotor;
+        RobotMap.rLeftMotor = parsed.rLeftMotor;
+        RobotMap.rRightMotor = parsed.rRightMotor;
+        RobotMap.screwDown = parsed.screwDown;
+        RobotMap.screwUp = parsed.screwUp;
+        RobotMap.solenoid1 = parsed.solenoid1;
+        RobotMap.solenoid2 = parsed.solenoid2;
+        
     }
 }

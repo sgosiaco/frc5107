@@ -1,6 +1,21 @@
 ## Use YamlBeans
 ## Extend this for every variable
 ---
-cMotorSpeed: -.75
-cFeedSpeed: .5
 
+fLeftMotor: 9
+rLeftMotor : 10
+fRightMotor : 8
+rRightMotor : 7
+cMotor1 : 3
+cMotor2 : 4
+cFeed : 6
+cScrew1 : 2
+cScrew2 : 5
+solenoid1 : 3
+solenoid2 : 2
+clawLimit : 2
+screwUp : 3
+screwDown : 4
+cMotorSpeed : -.75
+cFeedSpeed : .5
+cScrewSpeed : .75

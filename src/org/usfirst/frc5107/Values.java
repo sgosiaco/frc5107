@@ -10,7 +10,25 @@ package org.usfirst.frc5107;
  * @author root
  */
 public class Values {
-	public double cMotorSpeed;
-	public double cFeedSpeed;
-
+    public int
+            fLeftMotor,
+            rLeftMotor,
+            fRightMotor,
+            rRightMotor,
+            cMotor1,
+            cMotor2,
+            cFeed,
+            cScrew1,
+            cScrew2,
+            solenoid1,
+            solenoid2;
+    public int
+            clawLimit,
+            screwUp,
+            screwDown;
+    public double
+            cMotorSpeed,
+            cFeedSpeed,
+            cScrewSpeed;
+    
 }
